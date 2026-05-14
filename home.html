@@ -3,9 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>GitHub Issues Tracker</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"></script>
+    <script src="https://kit.fontawesome.com/8075efb750.js" crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+
 </head>
-<body>
-    <h1>Home Page</h1>
+<body class="container mx-auto">
+
+
+  <nav class="navbar my-6 flex flex-col md:flex-row  justify-between">
+  <a href="home.html" class="text-3xl font-bold mb-3 md:mb-0">GitHub Issues Tracker</a>
+  
+  <div class="flex gap-3">
+    <div class="border rounded-sm px-4 flex items-center gap-1.5">
+      <input class="outline-0 border-0" type="text" id="searchInput" placeholder="Search..." />
+      <button class="cursor-pointer" onclick="searchIssues()"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+
+    <button class="btn bg-blue-500 text-white items-center rounded-sm cursor-pointer">+Add New</button>
+  </div>
+</nav>
+
+<div class="tabs  flex-col md:flex-row card mb-4 md:mb-10 rounded-md gap-2 px-6 py-4">
+  <button class="btn px-7" onclick="filterIssues('all')" id="tab-all">All</button>
+  <button class="btn px-7" onclick="filterIssues('open')" id="tab-open">Open</button>
+  <button class="btn px-7" onclick="filterIssues('closed')" id="tab-closed">Closed</button>
+</div>
+
+<div class="info card mb-4 md:mb-8 flex flex-row justify-between">
+  <div  class="flex gap-2">
+    <img src="/assets/Aperture.png" class="w-12" alt="">
+    <div>
+      <span class="text-xl font-bold" id="issueCount">0 Issues</span>
+      <h1>Track and manage your project issues</h1>
+    </div>
+  </div>
+
+  <div class="flex flex-col md:flex-row gap-3">
+    <div class="flex items-center gap-1"><img class="w-5 h-5"  src="assets/Open-Status.png" alt=""> Open</div>
+    <div class="flex items-center gap-1"><img class="w-5 h-5"  src="assets/Closed- Status .png" alt="">Close</div>
+  </div>
+</div>
+
+<div id="loader" class="hidden">Loading...</div>
+
+<div id="issuesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+
+<div id="modal" class="hidden"></div>
+
+<script src="script/home.js"></script>
 </body>
 </html>
