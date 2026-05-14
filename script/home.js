@@ -87,42 +87,6 @@ async function searchIssues() {
   showLoader(false);
 }
 
-async function openModal(id) {
-
-  const res = await fetch(
-    `https://phi-lab-server.vercel.app/api/v1/lab/issues/${id}`
-  );
-
-  const data = await res.json();
-
-  const issue = data.data;
-
-  const modal = document.getElementById("modal");
-
-  modal.innerHTML = `
-  
-    <div class="modal-content">
-
-      <h2>${issue.title}</h2>
-
-      <p>${issue.description}</p>
-
-      <p>Status: ${issue.status}</p>
-
-      <p>Priority: ${issue.priority}</p>
-
-      <p>Author: ${issue.author}</p>
-
-      <button onclick="closeModal()">
-        Close
-      </button>
-
-    </div>
-    
-  `;
-
-  modal.classList.remove("hidden");
-}
 
 
 function showLoader(show) {
