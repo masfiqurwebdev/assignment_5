@@ -46,6 +46,18 @@ function displayIssues(issues) {
   });
 }
 
+function filterIssues(type) {
+  setActiveTab(type);
 
+  if (type === "all") {
+    displayIssues(allIssues);
+  } else {
+    const filtered = allIssues.filter(
+      issue => issue.status === type
+    );
+    displayIssues(filtered);
+  }
+  showLoader(false);
 
+}
 
